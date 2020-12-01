@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchBar from "./SearchBar";
 import youtube from "../apis/youtube";
+import VideoList from "./VideoList";
 
 class App extends Component {
   constructor(props) {
@@ -19,10 +20,11 @@ class App extends Component {
   }
 
   render() {
+    const { videos } = this.state;
     return (
       <div className="ui container">
-        <SearchBar handleSubmit={this.handleSubmit} />I have{" "}
-        {this.state.videos.length} videos
+        <SearchBar handleSubmit={this.handleSubmit} />
+        <VideoList videos={videos} />
       </div>
     );
   }
