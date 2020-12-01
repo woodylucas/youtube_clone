@@ -5,7 +5,7 @@ class SearchBar extends Component {
     super(props);
     this.state = { term: "" };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(evt) {
@@ -13,7 +13,9 @@ class SearchBar extends Component {
   }
 
   handleSubmit(evt) {
+    const { handleSubmit } = this.props;
     evt.preventDefault();
+    handleSubmit(this.state.term);
     // TODO:
     // Make sure we call, callback from parent component
   }
@@ -21,7 +23,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="search-bar ui segment">
-        <form onSubmit={this.handleSumit} className="ui form">
+        <form onSubmit={this.handleSubmit} className="ui form">
           <div className="field">
             <label>Video Search</label>
             <input
