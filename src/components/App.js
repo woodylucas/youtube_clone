@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import SearchBar from "./SearchBar";
 import youtube from "../apis/youtube";
 import VideoList from "./VideoList";
+import VideoDetail from "./VideoDetail";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { videos: [] };
+    this.state = { videos: [], selectedVideo: null };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -19,12 +20,17 @@ class App extends Component {
     this.setState({ videos: data.items });
   }
 
+  handleClick(video) {
+    this.setState({ selectedVideo: video });
+  }
+
   render() {
-    const { videos } = this.state;
+    const { videos, selectedVideo } = this.state;
     return (
       <div className="ui container">
         <SearchBar handleSubmit={this.handleSubmit} />
-        <VideoList videos={videos} />
+        <VideoDetail video={selectedVideo} />
+        <VideoList handleClick={this.handleClick} videos={videos} />
       </div>
     );
   }
