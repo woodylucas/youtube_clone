@@ -30,8 +30,16 @@ class App extends Component {
     return (
       <div className="ui container">
         <SearchBar handleSubmit={this.handleSubmit} />
-        <VideoDetail video={selectedVideo} />
-        <VideoList handleClick={this.handleClick} videos={videos} />
+        <div className="ui grid">
+          <div className="ui row">
+            <div className="eleven wide column">
+              <VideoDetail video={selectedVideo} />
+            </div>
+            <div className="five wide column">
+              <VideoList handleClick={this.handleClick} videos={videos} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

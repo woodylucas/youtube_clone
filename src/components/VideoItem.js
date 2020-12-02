@@ -10,7 +10,9 @@ const VideoItem = ({ video, handleClick }) => {
         alt={video.snippet.title}
       />
       <div className="content">
-        <div className="header">{video.snippet.title}</div>
+        <div className="header">
+          {video.snippet.title.replace(/(&quot\;)/g, '"')}
+        </div>
       </div>
     </div>
   );
