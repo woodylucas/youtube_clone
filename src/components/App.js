@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = { videos: [], selectedVideo: null };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   async handleSubmit(term) {
