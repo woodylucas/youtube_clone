@@ -12,6 +12,10 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidMount() {
+    this.handleSubmit("first take");
+  }
+
   async handleSubmit(term) {
     const { data } = await youtube.get("/search", {
       params: {
