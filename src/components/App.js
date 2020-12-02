@@ -18,7 +18,10 @@ class App extends Component {
         q: term,
       },
     });
-    this.setState({ videos: data.items });
+    this.setState({
+      videos: data.items,
+      selectedVideo: data.items[0],
+    });
   }
 
   handleClick(video) {
@@ -35,7 +38,7 @@ class App extends Component {
             <div className="eleven wide column">
               <VideoDetail video={selectedVideo} />
             </div>
-            <div className="five wide column">
+            <div className="five wide column ">
               <VideoList handleClick={this.handleClick} videos={videos} />
             </div>
           </div>
